@@ -1,0 +1,174 @@
+# Kubernetes Interview Questions and Answers (Conversation Style)
+
+### Interviewer
+
+Can you explain the architecture of **Kubernetes?
+
+### Candidate
+
+Kubernetes architecture mainly consists of **Control Plane (Master Node)** and **Worker Nodes**.
+
+The **Control Plane** manages the cluster and includes components like API Server, Scheduler, Controller Manager, and etcd.
+
+Worker nodes run the applications and include components such as kubelet, container runtime, and kube-proxy. These components ensure containers run properly and communicate across the cluster.
+
+---
+
+### Interviewer
+
+What are the components of master and worker nodes?
+
+### Candidate
+
+The **master node** includes:
+
+* API Server – entry point for all cluster communication
+* etcd – distributed key-value store for cluster data
+* Scheduler – assigns pods to nodes
+* Controller Manager – ensures desired cluster state
+
+The **worker node** includes:
+
+* kubelet – agent that manages containers on nodes
+* container runtime – runs container images
+* kube-proxy – manages networking and load balancing
+
+---
+
+### Interviewer
+
+What is a Deployment in Kubernetes?
+
+### Candidate
+
+A **Deployment** is a Kubernetes resource used to manage application pods. It ensures the desired number of replicas are running and supports features such as rolling updates, scaling, and rollback of application versions.
+
+---
+
+### Interviewer
+
+What are Stateful and Stateless applications in Kubernetes?
+
+### Candidate
+
+**Stateless applications** do not store session data and any pod can handle a request. Web servers like **Nginx** are common examples.
+
+**Stateful applications** store persistent data and require stable identity and storage. Databases like **MySQL** are examples. Kubernetes manages these using StatefulSets.
+
+---
+
+### Interviewer
+
+What is a DaemonSet?
+
+### Candidate
+
+A **DaemonSet** ensures that a pod runs on every node in the cluster. It is mainly used for node-level services such as log collection, monitoring agents, and networking services.
+
+---
+
+### Interviewer
+
+What are Persistent Volume (PV) and Persistent Volume Claim (PVC)?
+
+### Candidate
+
+A **Persistent Volume (PV)** is a storage resource available in the Kubernetes cluster.
+
+A **Persistent Volume Claim (PVC)** is a request for storage by a pod. The PVC binds to a PV and allows the pod to use that storage.
+
+This mechanism ensures that application data persists even if pods restart.
+
+---
+
+### Interviewer
+
+What is an Ingress resource?
+
+### Candidate
+
+An **Ingress** is used to manage external HTTP or HTTPS access to services inside a Kubernetes cluster. It provides routing rules that direct traffic from the internet to specific services.
+
+Ingress controllers such as **NGINX Ingress Controller** implement these routing rules.
+
+---
+
+### Interviewer
+
+What are Taints and Tolerations?
+
+### Candidate
+
+Taints and tolerations control pod scheduling.
+
+A **taint** is applied to a node to prevent pods from being scheduled there. A **toleration** is added to a pod to allow it to run on nodes with matching taints.
+
+This mechanism is useful for dedicating nodes to specific workloads.
+
+---
+
+### Interviewer
+
+What is Node Affinity and Pod Affinity?
+
+### Candidate
+
+**Node Affinity** ensures that pods run on nodes with specific labels.
+
+**Pod Affinity** schedules pods close to other pods with matching labels.
+
+**Pod Anti-Affinity** ensures pods are scheduled on different nodes for high availability.
+
+---
+
+### Interviewer
+
+What are Resource Requests and Limits?
+
+### Candidate
+
+**Resource requests** specify the minimum CPU and memory required for a container. The Kubernetes scheduler uses this to place pods on nodes.
+
+**Resource limits** define the maximum resources a container can use. If the container exceeds memory limits, it may be terminated.
+
+---
+
+### Interviewer
+
+What is Horizontal Pod Autoscaling?
+
+### Candidate
+
+Horizontal Pod Autoscaling automatically increases or decreases the number of pods based on metrics like CPU or memory usage. It helps applications handle varying workloads efficiently.
+
+---
+
+### Interviewer
+
+What is ImagePullBackOff?
+
+### Candidate
+
+ImagePullBackOff occurs when Kubernetes fails to pull a container image from a registry. The system retries the pull operation with increasing delay until the issue is resolved.
+
+Common causes include incorrect image names, missing images in the registry, or authentication issues.
+
+---
+
+### Interviewer
+
+Where do you store container images used in Kubernetes?
+
+### Candidate
+
+Container images are stored in **container registries**. Kubernetes pulls images from registries when starting containers.
+
+Common registries include:
+
+* Docker Hub
+* Amazon Elastic Container Registry
+* Azure Container Registry
+
+---
+
+✅ This is a **typical Kubernetes technical interview flow** used for **DevOps engineer roles (2–4 years experience)**.
