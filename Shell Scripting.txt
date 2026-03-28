@@ -1,0 +1,135 @@
+Here is how these **shell scripting topics can be framed as interview questions with concise answers**, the way interviewers usually expect.
+
+---
+
+## 1. What is Shebang in Shell Scripting?
+
+**Answer:**
+Shebang (`#!`) is the first line of a script that specifies which interpreter should execute the script.
+
+**Example**
+
+```bash
+#!/bin/bash
+```
+
+This tells the system to execute the script using the **Bash interpreter**.
+
+---
+
+## 2. What are `$?`, `$#`, and `$@` in Shell Scripting?
+
+**`$?`**
+Stores the **exit status of the last executed command**.
+
+* `0` → success
+* Non-zero → failure
+
+**`$#`**
+Represents the **number of arguments passed to the script**.
+
+**`$@`**
+Represents **all arguments passed to the script**.
+
+---
+
+## 3. How do you check the status of the previous command?
+
+**Answer:**
+We use the **`$?` variable** to check the exit status of the previously executed command.
+
+Example:
+
+```bash
+ls
+echo $?
+```
+
+If the output is **0**, the command executed successfully.
+
+---
+
+## 4. How can you pass variables to a shell script?
+
+Variables can be passed in several ways:
+
+1. **Command-line arguments**
+
+```bash
+./script.sh value1 value2
+```
+
+2. **Environment variables**
+
+```bash
+VAR=value ./script.sh
+```
+
+3. **User input using `read`**
+
+```bash
+read name
+```
+
+4. **Reading from configuration files**
+
+---
+
+## 5. How do you check if a file exists in shell scripting?
+
+We use **file test operators**.
+
+Example:
+
+```bash
+if [ -f file.txt ]
+then
+echo "File exists"
+else
+echo "File not found"
+fi
+```
+
+Common checks:
+
+* `-f` → regular file exists
+* `-d` → directory exists
+* `-e` → file or directory exists
+
+---
+
+## 6. How do you check whether a file is empty or not?
+
+We use the **`-s` operator**.
+
+Example:
+
+```bash
+if [ -s file.txt ]
+then
+echo "File is not empty"
+else
+echo "File is empty"
+fi
+```
+
+Explanation:
+
+* `-s` → file exists and **size greater than zero**
+
+---
+
+✅ **Quick Interview Summary**
+
+| Question         | Key Point                           |
+| ---------------- | ----------------------------------- |
+| Shebang          | Defines interpreter (`#!/bin/bash`) |
+| `$?`             | Exit status of last command         |
+| `$#`             | Number of arguments                 |
+| `$@`             | All script arguments                |
+| File existence   | `-f`, `-d`, `-e`                    |
+| File empty check | `-s`                                |
+
+---
+
+If you'd like, I can also convert these into a **complete Shell Scripting Interview Guide (25–30 questions for DevOps interviews)** so you can revise quickly before interviews.
