@@ -98,10 +98,210 @@ What is cherry-picking in Git?
 
 Cherry-picking allows us to select a specific commit from one branch and apply it to another branch without merging the entire branch. It is commonly used when we want to apply a particular bug fix to another branch.
 
+
+Good choice—having a solid, well-revised set of questions is exactly how many engineers have traditionally prepared and succeeded.
+
+Here is a **complete Git & GitHub interview question set (30 most asked questions)**, structured for proper revision.
+
 ---
 
-✅ This format is **very close to real DevOps interviews**, where the interviewer checks both **conceptual understanding and practical workflow**.
+# 📘 DevOps Interview – Git & GitHub (Top 30 Questions)
 
 ---
 
-If you want, I can also prepare a **complete 25–30 Git interview questions set (most asked in DevOps interviews)** so you can revise everything in one place.
+## 🔰 Basic Level
+
+### 1. What is **Git**?
+
+A distributed version control system used to track changes in source code.
+
+---
+
+### 2. What is **GitHub**?
+
+A cloud platform to host Git repositories and enable collaboration.
+
+---
+
+### 3. Difference between Git and GitHub?
+
+Git is a tool; GitHub is a hosting platform.
+
+---
+
+### 4. What is a repository?
+
+A storage location where project files and version history are kept.
+
+---
+
+### 5. What is a commit?
+
+A snapshot of changes made to files.
+
+---
+
+### 6. What is a branch?
+
+A separate line of development in a repository.
+
+---
+
+### 7. What is the default branch?
+
+Usually **main** (previously master).
+
+---
+
+### 8. What is staging area?
+
+An intermediate area where changes are prepared before committing.
+
+---
+
+### 9. What is `git init`?
+
+Initializes a new Git repository.
+
+---
+
+### 10. What is `git clone`?
+
+Copies a remote repository to the local system.
+
+---
+
+## ⚙️ Intermediate Level
+
+### 11. Difference between `git fetch` and `git pull`?
+
+* fetch → downloads changes
+* pull → downloads + merges
+
+---
+
+### 12. What is `git status`?
+
+Shows the current state of the working directory.
+
+---
+
+### 13. What is `git add`?
+
+Moves changes to staging area.
+
+---
+
+### 14. What is `git commit`?
+
+Saves changes with a message.
+
+---
+
+### 15. What is `git log`?
+
+Shows commit history.
+
+---
+
+### 16. What is a **Pull Request**?
+
+A request to merge code changes after review.
+
+---
+
+### 17. What is a merge conflict?
+
+Occurs when Git cannot automatically merge changes.
+
+---
+
+### 18. How do you resolve merge conflicts?
+
+* Identify file
+* Edit manually
+* Remove markers
+* `git add` → `git commit`
+
+---
+
+### 19. Difference between merge and rebase?
+
+* merge → keeps history, creates commit
+* rebase → linear history, rewrites commits
+
+---
+
+### 20. What is cherry-picking?
+
+Applying a specific commit from one branch to another.
+
+---
+
+## 🚀 Advanced Level
+
+### 21. What is a branching strategy?
+
+A method to manage branches during development.
+
+---
+
+### 22. What branching strategies have you used?
+
+* Feature branching
+* GitFlow
+* Trunk-based development
+
+---
+
+### 23. What is GitFlow?
+
+A structured branching model with main, develop, feature, release, and hotfix branches.
+
+---
+
+### 24. What is `git stash`?
+
+Temporarily saves uncommitted changes.
+
+---
+
+### 25. Difference between `git reset` and `git revert`?
+
+* reset → removes commits (history change)
+* revert → creates new commit to undo changes
+
+---
+
+### 26. What is `git rebase` used for?
+
+To apply commits on top of another base branch.
+
+---
+
+### 27. What is `git diff`?
+
+Shows differences between files or commits.
+
+---
+
+### 28. What is a tag in Git?
+
+Used to mark specific versions (like releases).
+
+---
+
+### 29. What is HEAD in Git?
+
+Pointer to the current commit.
+
+---
+
+### 30. How do you handle large teams in Git?
+
+* Use branching strategy
+* Code reviews (PRs)
+* CI/CD pipelines
+* Access control in **GitHub**
+
+---
