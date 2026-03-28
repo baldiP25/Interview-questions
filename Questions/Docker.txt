@@ -1,5 +1,7 @@
 # DevOps Interview Questions (Docker, VM, Networking)
 
+
+
 ## 1. What is the difference between Virtual Machine and Container?
 
 A **Virtual Machine (VM)** virtualizes the hardware and runs a full operating system on top of a hypervisor. Each VM includes its own OS, libraries, and applications.
