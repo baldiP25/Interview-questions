@@ -131,5 +131,300 @@ Explanation:
 | File empty check | `-s`                                |
 
 ---
+Good—this is exactly the kind of preparation that pays off. Here’s a **complete Shell Scripting Interview Guide (DevOps-focused, 30 questions)**, structured the way experienced interviewers usually ask.
 
-If you'd like, I can also convert these into a **complete Shell Scripting Interview Guide (25–30 questions for DevOps interviews)** so you can revise quickly before interviews.
+---
+
+# 🧾 Shell Scripting Interview Guide (DevOps – 30 Questions)
+
+---
+
+## 🔹 Basic Level
+
+### 1. What is Shell Scripting?
+
+**Answer:**
+Shell scripting is writing a series of commands in a file to automate tasks in a Unix/Linux environment.
+
+---
+
+### 2. What is Shebang?
+
+**Answer:**
+Shebang (`#!`) defines the interpreter for the script.
+
+```bash
+#!/bin/bash
+```
+
+---
+
+### 3. What are different types of shells?
+
+**Answer:**
+
+* Bash
+* Sh
+* Ksh
+* Csh
+
+---
+
+### 4. What is the difference between `sh` and `bash`?
+
+**Answer:**
+
+* `sh` → basic shell
+* `bash` → advanced features like arrays, better scripting support
+
+---
+
+### 5. What are variables in shell scripting?
+
+**Answer:**
+Used to store values.
+
+```bash
+name="DevOps"
+```
+
+---
+
+### 6. How do you read user input?
+
+```bash
+read name
+```
+
+---
+
+### 7. What are special variables?
+
+**Answer:**
+
+* `$0` → script name
+* `$1, $2` → arguments
+* `$#` → argument count
+* `$@` → all arguments
+* `$?` → last command status
+
+---
+
+### 8. Difference between `$@` and `$*`?
+
+**Answer:**
+
+* `$@` → treats each argument separately
+* `$*` → treats all arguments as one string
+
+---
+
+## 🔹 Intermediate Level
+
+### 9. How to check previous command status?
+
+**Answer:**
+Using `$?`
+
+---
+
+### 10. How to pass variables to script?
+
+**Answer:**
+
+* Command line arguments
+* Environment variables
+* `read` input
+* Config files
+
+---
+
+### 11. How to check file exists?
+
+```bash
+[ -f file.txt ]
+```
+
+---
+
+### 12. How to check file is empty?
+
+```bash
+[ -s file.txt ]
+```
+
+---
+
+### 13. What is conditional statement?
+
+**Answer:**
+Used to make decisions.
+
+```bash
+if [ condition ]; then
+  commands
+fi
+```
+
+---
+
+### 14. What are loops in shell scripting?
+
+**Answer:**
+
+* for loop
+* while loop
+* until loop
+
+---
+
+### 15. Example of for loop
+
+```bash
+for i in 1 2 3
+do
+echo $i
+done
+```
+
+---
+
+### 16. What is case statement?
+
+**Answer:**
+Used as switch-case alternative.
+
+---
+
+### 17. What is function in shell script?
+
+```bash
+myfunc() {
+echo "Hello"
+}
+```
+
+---
+
+### 18. Difference between `=` and `==`?
+
+**Answer:**
+
+* `=` → assignment
+* `==` → comparison (in some shells)
+
+---
+
+### 19. What is exit status?
+
+**Answer:**
+Return code of a command (`0` = success).
+
+---
+
+### 20. How to debug a shell script?
+
+**Answer:**
+
+```bash
+bash -x script.sh
+```
+
+---
+
+## 🔹 Advanced Level (DevOps Focus)
+
+### 21. What is cron job?
+
+**Answer:**
+Used to schedule scripts.
+
+---
+
+### 22. How to schedule a script?
+
+```bash
+crontab -e
+```
+
+---
+
+### 23. What is `grep`?
+
+**Answer:**
+Used to search text patterns.
+
+---
+
+### 24. What is `awk`?
+
+**Answer:**
+Used for pattern scanning and processing.
+
+---
+
+### 25. What is `sed`?
+
+**Answer:**
+Stream editor for modifying text.
+
+---
+
+### 26. What is piping?
+
+**Answer:**
+Passing output of one command to another.
+
+```bash
+ls | grep file
+```
+
+---
+
+### 27. What is redirection?
+
+**Answer:**
+
+* `>` → overwrite
+* `>>` → append
+* `<` → input
+
+---
+
+### 28. How to handle errors in script?
+
+**Answer:**
+
+```bash
+set -e
+```
+
+Stops script on error.
+
+---
+
+### 29. What is `set -x` and `set -e`?
+
+**Answer:**
+
+* `set -x` → debug mode
+* `set -e` → exit on error
+
+---
+
+### 30. Real-time scenario question
+
+**Q:** Write a script to check if a file exists and is not empty.
+
+```bash
+#!/bin/bash
+
+FILE="test.txt"
+
+if [ -f "$FILE" ] && [ -s "$FILE" ]
+then
+echo "File exists and has data"
+else
+echo "File missing or empty"
+fi
+```
