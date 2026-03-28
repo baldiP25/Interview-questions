@@ -1,0 +1,353 @@
+Here is how the **Ansible topics you asked** can appear in a **DevOps interview conversation format**.
+
+---
+
+### Interview Questions on **Ansible**
+
+**Interviewer:** What is Ansible?
+**Candidate:** Ansible is an open-source configuration management and automation tool used for application deployment, infrastructure provisioning, and configuration management. It works in an agentless architecture and communicates with managed nodes using SSH.
+
+---
+
+**Interviewer:** What is an Ansible playbook?
+**Candidate:** An Ansible playbook is a YAML file that contains a set of automation instructions describing which tasks should run on which hosts. It helps automate configuration and deployment processes.
+
+---
+
+**Interviewer:** What is a play in Ansible?
+**Candidate:** A play is a section in a playbook that defines which hosts to target and what tasks should be executed on those hosts.
+
+---
+
+**Interviewer:** What is a role in Ansible?
+**Candidate:** A role is a structured and reusable way of organizing Ansible playbooks, tasks, variables, handlers, and files. It helps maintain modular and reusable automation code.
+
+---
+
+**Interviewer:** Explain the role folder structure in Ansible.
+**Candidate:** Ansible roles follow a predefined directory structure:
+
+* **tasks/** – Contains the main list of tasks to execute
+* **handlers/** – Contains handlers triggered by tasks
+* **files/** – Stores static files to copy to managed nodes
+* **templates/** – Contains Jinja2 templates for configuration files
+* **vars/** – Defines variables used in the role
+* **defaults/** – Contains default variables with lowest priority
+* **meta/** – Defines role metadata and dependencies
+
+This structure helps organize automation code in a standard way.
+
+---
+
+**Interviewer:** What is a handler in Ansible?
+**Candidate:** A handler is a special task that runs only when triggered by another task using the **notify** directive. It is commonly used to restart services after configuration changes.
+
+---
+
+**Interviewer:** What is an inventory file in Ansible?
+**Candidate:** An inventory file contains the list of managed nodes and groups of servers on which Ansible executes tasks.
+
+---
+
+**Interviewer:** How many types of inventory files are available in Ansible?
+**Candidate:** There are two types:
+
+1. **Static Inventory** – Hosts are manually defined in a file.
+2. **Dynamic Inventory** – Hosts are automatically fetched from external sources such as cloud providers like AWS, Azure, or GCP.
+
+---
+
+**Interviewer:** Can you show a simple playbook to install Apache and copy a configuration file?
+
+**Candidate:**
+
+```yaml
+---
+- name: Install and configure Apache
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: Copy configuration file
+      copy:
+        src: httpd.conf
+        dest: /etc/httpd/conf/httpd.conf
+      notify: restart apache
+
+    - name: Start httpd service
+      service:
+        name: httpd
+        state: started
+
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+```
+Here’s a **complete Ansible interview question set (with answers)**—the kind that’s been traditionally asked in DevOps interviews and still holds strong today.
+
+---
+
+# 🔹 Ansible Interview Questions & Answers
+
+Using **Ansible**
+
+---
+
+## 🔸 Basic Level
+
+### 1. What is Ansible?
+
+Ansible is an open-source automation tool used for **configuration management, application deployment, and infrastructure provisioning**. It is **agentless** and uses SSH.
+
+---
+
+### 2. What are the main components of Ansible?
+
+* Inventory
+* Playbook
+* Modules
+* Tasks
+* Roles
+* Handlers
+
+---
+
+### 3. What is an inventory file?
+
+It is a file that contains **list of hosts and groups** that Ansible manages.
+
+---
+
+### 4. Types of inventory?
+
+* Static Inventory
+* Dynamic Inventory
+
+---
+
+### 5. What is a playbook?
+
+A YAML file that defines **automation tasks and configurations**.
+
+---
+
+### 6. What is a play?
+
+A play maps **hosts to tasks**.
+
+---
+
+### 7. What is a task?
+
+A single action executed using a module.
+
+---
+
+### 8. What are modules?
+
+Modules are **pre-built units of work** (like yum, copy, service).
+
+---
+
+### 9. What is a handler?
+
+A special task that runs **only when notified**, usually for restarting services.
+
+---
+
+### 10. What is YAML?
+
+A human-readable data format used to write playbooks.
+
+---
+
+## 🔸 Intermediate Level
+
+### 11. What is a role in Ansible?
+
+A reusable structure to organize tasks, variables, handlers, and files.
+
+---
+
+### 12. Explain role structure.
+
+* tasks/
+* handlers/
+* templates/
+* files/
+* vars/
+* defaults/
+* meta/
+
+---
+
+### 13. Difference between vars and defaults?
+
+* **vars** → higher priority
+* **defaults** → lowest priority
+
+---
+
+### 14. What is become in Ansible?
+
+Used for **privilege escalation** (like sudo).
+
+---
+
+### 15. What is ad-hoc command?
+
+One-line command used for quick tasks.
+
+Example:
+
+```bash
+ansible all -m ping
+```
+
+---
+
+### 16. Difference between ad-hoc and playbook?
+
+| Ad-hoc             | Playbook           |
+| ------------------ | ------------------ |
+| One-time execution | Reusable           |
+| Simple tasks       | Complex automation |
+
+---
+
+### 17. What is idempotency?
+
+Running the same playbook multiple times **gives the same result** (no changes if already configured).
+
+---
+
+### 18. What is template module?
+
+Used to copy **dynamic files using Jinja2 templates**.
+
+---
+
+### 19. What is copy module?
+
+Used to copy **static files** to remote systems.
+
+---
+
+### 20. What is service module?
+
+Used to **start/stop/restart services**.
+
+---
+
+## 🔸 Advanced / Scenario-Based
+
+### 21. What happens if a task fails?
+
+By default, execution stops on that host.
+
+You can handle using:
+
+* `ignore_errors: yes`
+* `rescue` blocks
+
+---
+
+### 22. How do you run a playbook with custom inventory?
+
+```bash
+ansible-playbook -i inventory.ini playbook.yml
+```
+
+---
+
+### 23. How do you pass variables to playbook?
+
+* Command line
+* vars section
+* vars_files
+* extra vars (`-e`)
+
+Example:
+
+```bash
+ansible-playbook playbook.yml -e "env=prod"
+```
+
+---
+
+### 24. What is register in Ansible?
+
+Used to **store output of a task into a variable**.
+
+---
+
+### 25. What is when condition?
+
+Used for **conditional execution**.
+
+Example:
+
+```yaml
+when: ansible_os_family == "RedHat"
+```
+
+---
+
+### 26. What is loop in Ansible?
+
+Used to repeat tasks.
+
+Example:
+
+```yaml
+loop:
+  - httpd
+  - git
+```
+
+---
+
+### 27. What is Ansible Galaxy?
+
+A repository for **sharing and downloading roles**.
+
+---
+
+### 28. How do you secure secrets in Ansible?
+
+Using **Ansible Vault**.
+
+---
+
+### 29. What is Ansible Vault?
+
+Used to **encrypt sensitive data** like passwords.
+
+---
+
+### 30. Real-Time Scenario Question
+
+**Interviewer:** How do you restart a service only if config file changes?
+**Candidate:** Use **notify and handler**. The task copies config and notifies a handler, which restarts the service only when a change occurs.
+
+---
+
+# 🔥 Bonus: Quick Revision (One-Line Answers)
+
+* Playbook → YAML automation file
+* Play → Hosts + Tasks
+* Task → Single action
+* Role → Reusable structure
+* Inventory → List of hosts
+* Handler → Triggered task
+* Module → Work unit
+* Idempotent → Same result always
+
+---
