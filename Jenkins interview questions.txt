@@ -66,3 +66,204 @@ Some commonly used plugins include the **Git plugin**, **Pipeline plugin**, **Do
 Alerts can be configured using email notifications, chat integrations, or monitoring systems. For example, Jenkins can send notifications to tools like Slack or email when a build succeeds or fails. This helps the team quickly respond to issues.
 
 ---
+
+# 🔷 Scenario-Based Jenkins Interview Questions
+
+---
+
+## 1️⃣ Build Failing After Code Merge
+
+**Interviewer:**
+After a developer merges code, the **Jenkins** pipeline starts failing. How do you handle it?
+
+**Answer:**
+First, I check the **console logs** to identify the exact error. Then:
+
+* Verify recent code changes from **Git**
+* Run the build locally to reproduce the issue
+* Check dependency or version conflicts
+* Rollback or fix the faulty commit if needed
+
+This approach ensures quick root cause identification.
+
+---
+
+## 2️⃣ Pipeline Taking Too Long
+
+**Interviewer:**
+Your Jenkins pipeline is very slow. What will you do?
+
+**Answer:**
+I optimize by:
+
+* Running stages in **parallel**
+* Using **caching** for dependencies
+* Using **lightweight checkout**
+* Scaling agents using **Kubernetes** plugin
+* Removing unnecessary steps
+
+This reduces overall pipeline execution time.
+
+---
+
+## 3️⃣ Agent Not Available
+
+**Interviewer:**
+Build is stuck because no agent is available. How do you fix it?
+
+**Answer:**
+I would:
+
+* Check agent status (online/offline)
+* Verify labels and executor count
+* Restart agent if disconnected
+* Check disk/memory usage
+* Add new agents if load is high
+
+---
+
+## 4️⃣ Secure Credentials Handling
+
+**Interviewer:**
+How do you handle sensitive data like passwords?
+
+**Answer:**
+I use Jenkins **credentials store**:
+
+* Store secrets securely
+* Use them via environment variables
+* Avoid hardcoding in pipeline
+
+Example tools:
+
+* Docker registry credentials
+* API tokens
+
+---
+
+## 5️⃣ Deployment to Multiple Environments
+
+**Interviewer:**
+You need to deploy to dev, test, and prod. How do you design the pipeline?
+
+**Answer:**
+I use:
+
+* **Parameterized pipeline** (environment selection)
+* Separate stages for each environment
+* Approval step before production
+
+This ensures controlled and flexible deployments.
+
+---
+
+## 6️⃣ Jenkins Server Down
+
+**Interviewer:**
+Jenkins server is down. What will you do?
+
+**Answer:**
+
+* Check server logs
+* Restart Jenkins service
+* Verify disk space and memory
+* Restore from backup if needed
+* In production, use high availability setup
+
+---
+
+## 7️⃣ Plugin Failure
+
+**Interviewer:**
+A plugin is causing pipeline failure. How do you handle it?
+
+**Answer:**
+
+* Check plugin version compatibility
+* Rollback to stable version
+* Update plugin safely
+* Review Jenkins logs
+
+---
+
+## 8️⃣ Git Checkout Failure
+
+**Interviewer:**
+Pipeline fails during code checkout. What could be wrong?
+
+**Answer:**
+
+* Incorrect repository URL
+* Wrong credentials
+* Network issue
+* Branch does not exist
+
+I verify integration with **GitHub** or **GitLab**.
+
+---
+
+## 9️⃣ Need to Run Jobs in Parallel
+
+**Interviewer:**
+How do you run multiple jobs simultaneously?
+
+**Answer:**
+Use **parallel stages** in pipeline:
+
+```groovy
+stage('Parallel Execution') {
+    parallel {
+        stage('Test1') {
+            steps { echo 'Running Test1' }
+        }
+        stage('Test2') {
+            steps { echo 'Running Test2' }
+        }
+    }
+}
+```
+
+---
+
+## 🔟 Continuous Deployment Failure
+
+**Interviewer:**
+Deployment failed after build success. What will you check?
+
+**Answer:**
+
+* Deployment logs
+* Server access/permissions
+* Configuration issues
+* Container issues in **Kubernetes**
+* Rollback to previous stable version
+
+---
+
+## 1️⃣1️⃣ Disk Space Issue in Jenkins
+
+**Interviewer:**
+Jenkins suddenly stops working due to disk space. What do you do?
+
+**Answer:**
+
+* Clean old builds
+* Delete unused workspaces
+* Configure log rotation
+* Monitor disk usage regularly
+
+---
+
+## 1️⃣2️⃣ Notifications Not Working
+
+**Interviewer:**
+Team is not receiving alerts. How do you fix it?
+
+**Answer:**
+
+* Check notification plugin configuration
+* Verify SMTP or **Slack webhook
+* Test connection
+* Check Jenkins logs
+
+---
