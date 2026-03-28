@@ -1,0 +1,68 @@
+Below is a **mock interview conversation** based on the Jenkins questions you asked. This format helps you practice how interviews usually flow.
+
+---
+
+### Interview: Jenkins CI/CD Discussion
+
+**Interviewer:** Can you explain the stages of a pipeline in **Jenkins**?
+
+**Candidate:**
+A Jenkins pipeline is divided into multiple stages to organize the CI/CD process. The common stages include **Build, Test, Code Analysis, Package, and Deploy**. Each stage represents a step in the software delivery pipeline and helps track progress and failures clearly.
+
+---
+
+**Interviewer:** How do you pass variables in Jenkins pipelines?
+
+**Candidate:**
+Variables can be passed in several ways such as **parameters, environment variables, script variables, and credentials**. For example, we can define parameters in the pipeline so users can provide values like environment or version at runtime.
+
+---
+
+**Interviewer:** What is a parameterized job in Jenkins?
+
+**Candidate:**
+A parameterized job allows us to provide **input parameters when triggering a build**. These parameters can be string, choice, boolean, or password values. This makes the pipeline flexible because the same job can run with different inputs like environment or branch name.
+
+---
+
+**Interviewer:** How do you troubleshoot Jenkins pipelines?
+
+**Candidate:**
+The first step is to check the **console output** to identify the error. Then I verify the **Jenkinsfile syntax**, check the **build agent status**, validate **repository access**, and confirm that all required plugins and environment variables are properly configured.
+
+---
+
+**Interviewer:** Can you explain the master–agent architecture in Jenkins?
+
+**Candidate:**
+Jenkins follows a **master–agent architecture**. The master (controller) manages the Jenkins server, schedules jobs, and monitors builds. The agents execute the actual build tasks. This architecture distributes workloads across multiple machines and improves scalability.
+
+---
+
+**Interviewer:** What is an agent in Jenkins and how do you configure it?
+
+**Candidate:**
+An agent is a machine where Jenkins runs build jobs. To configure it, we go to **Manage Jenkins → Manage Nodes and Clouds → New Node**, configure the node details such as executors and labels, and then connect it using **SSH or JNLP**.
+
+---
+
+**Interviewer:** What are plugins in Jenkins and why are they used?
+
+**Candidate:**
+Plugins are extensions that add extra functionality to Jenkins. They help integrate Jenkins with other tools such as source control systems, build tools, container platforms, and notification systems.
+
+---
+
+**Interviewer:** Which plugins have you used in Jenkins?
+
+**Candidate:**
+Some commonly used plugins include the **Git plugin**, **Pipeline plugin**, **Docker plugin**, **Kubernetes plugin**, **SonarQube scanner plugin**, and **Email extension plugin**. These plugins help integrate Jenkins with tools like Git, Docker, Kubernetes, and SonarQube.
+
+---
+
+**Interviewer:** How do you get alerts in Jenkins?
+
+**Candidate:**
+Alerts can be configured using email notifications, chat integrations, or monitoring systems. For example, Jenkins can send notifications to tools like Slack or email when a build succeeds or fails. This helps the team quickly respond to issues.
+
+---
