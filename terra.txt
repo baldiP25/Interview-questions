@@ -1,0 +1,527 @@
+Below is a **Terraform Interview Q&A set** based on all the questions we discussed. This format is commonly used when preparing for DevOps interviews.
+
+---
+
+# Terraform Interview Questions and Answers
+
+### 1. What is Terraform?
+
+Terraform is an **Infrastructure as Code (IaC) tool** used to provision and manage infrastructure using configuration files. It allows us to automate the creation of cloud resources like servers, networks, and storage in platforms such as **Amazon Web Services**.
+
+---
+
+### 2. What is Infrastructure as Code (IaC)?
+
+Infrastructure as Code is the practice of **managing infrastructure using code instead of manual configuration**. Tools like Terraform help automate infrastructure deployment and maintain consistency across environments.
+
+---
+
+### 3. What is a provider in Terraform?
+
+A **provider** is a plugin that allows Terraform to interact with external platforms such as **AWS, Azure, or Kubernetes** to create and manage resources.
+
+Example:
+
+```hcl
+provider "aws" {
+  region = "ap-south-1"
+}
+```
+
+---
+
+### 4. What is a Terraform state file?
+
+A **state file** stores the current state of infrastructure managed by Terraform. It maps Terraform configuration to real infrastructure resources.
+
+Default file:
+
+```
+terraform.tfstate
+```
+
+---
+
+### 5. Where do you store the Terraform state file?
+
+In team environments, the state file is usually stored in a **remote backend like an S3 bucket in AWS**, and **DynamoDB is used for state locking** to prevent multiple users from modifying it simultaneously.
+
+---
+
+### 6. What happens if the Terraform state file gets corrupted?
+
+Terraform may lose track of existing resources and could recreate them. To recover, we restore the state file from backup or re-import resources using the `terraform import` command.
+
+---
+
+### 7. What is backend configuration in Terraform?
+
+A **backend** defines where the Terraform state file is stored. It can be local or remote.
+
+Example using S3 backend:
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket = "terraform-state"
+    key    = "dev/terraform.tfstate"
+    region = "ap-south-1"
+  }
+}
+```
+
+---
+
+### 8. What is a provisioner in Terraform?
+
+A **provisioner** runs scripts or commands on a resource after it is created.
+
+Types:
+
+* File provisioner
+* Remote-exec provisioner
+* Local-exec provisioner
+
+---
+
+### 9. What is the lifecycle block in Terraform?
+
+A **lifecycle block** controls how Terraform creates or deletes resources.
+
+Examples:
+
+* `create_before_destroy`
+* `prevent_destroy`
+* `ignore_changes`
+
+---
+
+### 10. What are meta-arguments in Terraform?
+
+Meta-arguments control how Terraform manages resources.
+
+Common meta-arguments:
+
+* `count`
+* `for_each`
+* `depends_on`
+* `lifecycle`
+* `provider`
+
+---
+
+### 11. What is a data block in Terraform?
+
+A **data block** retrieves information about existing resources from the cloud instead of creating new resources.
+
+Example: fetching an existing AMI.
+
+---
+
+### 12. How do you bring manually created infrastructure under Terraform control?
+
+We use the **terraform import** command to add existing resources into the Terraform state file.
+
+Example:
+
+```
+terraform import aws_instance.example i-123456789
+```
+
+---
+
+### 13. What is a null resource in Terraform?
+
+A **null resource** does not create any infrastructure but is used to run scripts or automation tasks using provisioners.
+
+Example:
+
+```hcl
+resource "null_resource" "example" {
+  provisioner "local-exec" {
+    command = "echo Hello Terraform"
+  }
+}
+```
+
+---
+
+### 14. Write Terraform resource blocks for EC2, VPC, and S3.
+
+Example:
+
+```hcl
+provider "aws" {
+  region = "ap-south-1"
+}
+
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}
+
+resource "aws_s3_bucket" "bucket" {
+  bucket = "my-terraform-bucket"
+}
+```
+
+---
+
+### 15. How many types of variables are available in Terraform?
+
+There are mainly **three types of variables**:
+
+1. **Input Variables** – pass values into Terraform configuration
+2. **Local Variables** – store temporary values inside configuration
+3. **Output Variables** – display values after resource creation
+
+---
+
+### Example
+
+Input variable:
+
+```hcl
+variable "instance_type" {
+  default = "t2.micro"
+}
+```
+
+Local variable:
+
+```hcl
+locals {
+  environment = "dev"
+}
+```
+
+Output variable:
+
+```hcl
+output "instance_ip" {
+  value = aws_instance.web.public_ip
+}
+```
+Good—this is the kind of preparation that really pays off in interviews. Below is a **complete Terraform interview set (30–40 questions)** structured the way experienced DevOps engineers are usually evaluated.
+
+---
+
+# 🔥 Terraform Interview Questions (2–5 Years Experience)
+
+---
+
+## 🔹 Basic & Core Concepts
+
+### 1. What is Terraform?
+
+Terraform is an IaC tool used to **provision and manage infrastructure using code** across multiple platforms like **Amazon Web Services**.
+
+---
+
+### 2. What are the main components of Terraform?
+
+* Provider
+* Resource
+* Variable
+* Output
+* State
+
+---
+
+### 3. What is a provider?
+
+A provider is a plugin that allows Terraform to **interact with cloud platforms**.
+
+---
+
+### 4. What is a resource?
+
+A resource is a **block used to create infrastructure**, like EC2, VPC, or S3.
+
+---
+
+### 5. What is Terraform state?
+
+State file stores the **current mapping of infrastructure**.
+
+---
+
+### 6. Why is state important?
+
+* Tracks resources
+* Improves performance
+* Avoids duplication
+
+---
+
+### 7. Local vs Remote state?
+
+* Local → stored on local system
+* Remote → stored in S3 / Terraform Cloud
+
+---
+
+### 8. What is backend?
+
+Backend defines **where state file is stored**.
+
+---
+
+### 9. What is state locking?
+
+Prevents multiple users from modifying state simultaneously (using DynamoDB).
+
+---
+
+### 10. What happens if state file is deleted?
+
+Terraform may recreate resources → leads to **duplicate infrastructure**.
+
+---
+
+## 🔹 Intermediate Level
+
+### 11. What is a provisioner?
+
+Used to run scripts after resource creation.
+
+---
+
+### 12. Types of provisioners?
+
+* local-exec
+* remote-exec
+* file
+
+---
+
+### 13. What is lifecycle block?
+
+Controls resource behavior:
+
+* create_before_destroy
+* prevent_destroy
+* ignore_changes
+
+---
+
+### 14. What are meta-arguments?
+
+Special arguments to control resource behavior:
+
+* count
+* for_each
+* depends_on
+
+---
+
+### 15. Difference between count and for_each?
+
+| count         | for_each       |
+| ------------- | -------------- |
+| Uses index    | Uses key/value |
+| Less flexible | More flexible  |
+
+---
+
+### 16. What is data block?
+
+Used to **fetch existing resources**.
+
+---
+
+### 17. What is null resource?
+
+Used to run scripts without creating infrastructure.
+
+---
+
+### 18. What are variables in Terraform?
+
+* Input
+* Local
+* Output
+
+---
+
+### 19. What is terraform.tfvars?
+
+File used to **pass variable values**.
+
+---
+
+### 20. What is terraform init?
+
+Initializes Terraform and downloads providers.
+
+---
+
+### 21. What is terraform plan?
+
+Shows execution plan.
+
+---
+
+### 22. What is terraform apply?
+
+Creates infrastructure.
+
+---
+
+### 23. What is terraform destroy?
+
+Deletes infrastructure.
+
+---
+
+## 🔹 Advanced Level
+
+### 24. What are Terraform modules?
+
+Reusable blocks of Terraform code.
+
+---
+
+### 25. What is module usage?
+
+Helps standardize infrastructure.
+
+---
+
+### 26. What is remote backend?
+
+Stores state in remote location like S3.
+
+---
+
+### 27. How do you handle secrets in Terraform?
+
+* Use environment variables
+* Use secret managers
+* Avoid hardcoding
+
+---
+
+### 28. What is terraform workspace?
+
+Used to manage **multiple environments (dev, test, prod)**.
+
+---
+
+### 29. What is terraform import?
+
+Used to bring **existing resources under Terraform control**.
+
+---
+
+### 30. What is taint in Terraform?
+
+Marks resource for recreation.
+
+```bash
+terraform taint aws_instance.example
+```
+
+---
+
+### 31. What is terraform refresh?
+
+Updates state file with real infrastructure.
+
+---
+
+### 32. What is drift in Terraform?
+
+When real infrastructure differs from Terraform state.
+
+---
+
+### 33. How do you resolve drift?
+
+* terraform refresh
+* terraform plan
+* manual correction
+
+---
+
+### 34. What is dependency in Terraform?
+
+Terraform automatically handles dependencies but can be explicitly defined using `depends_on`.
+
+---
+
+### 35. How do you manage multiple environments?
+
+* Workspaces
+* Separate state files
+* Separate folders
+
+---
+
+## 🔹 Scenario-Based Questions (Very Important)
+
+### 36. How do you handle manual changes in AWS?
+
+Use:
+
+```bash
+terraform plan
+```
+
+Then correct drift or use import.
+
+---
+
+### 37. How do you avoid downtime during updates?
+
+Use lifecycle:
+
+```hcl
+create_before_destroy = true
+```
+
+---
+
+### 38. What if two people run Terraform at same time?
+
+Use **state locking (DynamoDB)**.
+
+---
+
+### 39. How do you secure Terraform state file?
+
+* Use remote backend
+* Enable encryption (S3)
+* Restrict IAM access
+
+---
+
+### 40. How do you structure Terraform project?
+
+Typical structure:
+
+```
+project/
+ ├── main.tf
+ ├── variables.tf
+ ├── outputs.tf
+ ├── terraform.tfvars
+ └── modules/
+```
+
+---
+
+# ✅ Strong Interview Closing Answer
+
+If interviewer asks: *“Explain your Terraform experience”*
+
+You can say:
+
+👉
+“I use Terraform to provision and manage infrastructure in AWS. I work with modules, remote backends using S3 and DynamoDB for state locking, and handle multiple environments using workspaces. I also use data sources, lifecycle rules, and integrate Terraform with CI/CD tools like Jenkins.”
+
+---
