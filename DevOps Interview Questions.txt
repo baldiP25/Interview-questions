@@ -1,0 +1,181 @@
+# DevOps Interview Questions (Docker, VM, Networking)
+
+## 1. What is the difference between Virtual Machine and Container?
+
+A **Virtual Machine (VM)** virtualizes the hardware and runs a full operating system on top of a hypervisor. Each VM includes its own OS, libraries, and applications.
+
+A **container** virtualizes the operating system. Containers share the host OS kernel but package the application with its dependencies.
+
+**Key differences**
+
+| Feature        | Virtual Machine        | Container     |
+| -------------- | ---------------------- | ------------- |
+| OS             | Each VM has its own OS | Share host OS |
+| Size           | Large (GBs)            | Small (MBs)   |
+| Startup Time   | Slow                   | Fast          |
+| Resource Usage | High                   | Low           |
+
+Containers are commonly created using Docker.
+
+---
+
+# Docker Interview Questions
+
+## 2. What are some commonly used Docker commands?
+
+Some commonly used commands in Docker include:
+
+```
+docker --version
+docker pull nginx
+docker images
+docker run nginx
+docker ps
+docker stop <container_id>
+docker rm <container_id>
+docker logs <container_id>
+docker exec -it <container_id> /bin/bash
+docker build -t image_name .
+```
+
+These commands help manage images and containers.
+
+---
+
+## 3. How many types of Docker networks are available?
+
+There are **five types of Docker networks**.
+
+1. **Bridge Network**
+
+   * Default network
+   * Allows containers on the same host to communicate
+
+2. **Host Network**
+
+   * Container shares the host network
+
+3. **None Network**
+
+   * Container has no network access
+
+4. **Overlay Network**
+
+   * Used for multi-host communication
+   * Commonly used with clusters
+
+5. **Macvlan Network**
+
+   * Assigns a MAC address to the container
+
+Overlay networking is widely used with orchestration tools like Kubernetes.
+
+---
+
+## 4. How many types of Docker volumes are available?
+
+There are **three types of Docker volumes**:
+
+1. **Named Volumes**
+
+   * Managed by Docker
+   * Recommended for production
+
+2. **Bind Mounts**
+
+   * Uses a directory from the host machine
+
+3. **tmpfs Mounts**
+
+   * Stores data in system memory (RAM)
+   * Temporary storage
+
+Volumes are used to persist data in Docker containers.
+
+---
+
+## 5. How do you persist data in Docker?
+
+By default, container data is lost when the container is deleted. To persist data we use **volumes or bind mounts**.
+
+Example using volume:
+
+```
+docker volume create mydata
+docker run -d -v mydata:/app/data nginx
+```
+
+This stores data outside the container so it remains available even if the container is removed.
+
+---
+
+## 6. What is a Dockerfile?
+
+A **Dockerfile** is a script that contains instructions to build a Docker image automatically.
+
+Example Dockerfile:
+
+```
+FROM ubuntu:20.04
+RUN apt-get update
+RUN apt-get install -y nginx
+COPY . /app
+WORKDIR /app
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
+```
+
+Important Dockerfile instructions include:
+
+* FROM
+* RUN
+* COPY
+* ADD
+* WORKDIR
+* EXPOSE
+* CMD
+* ENTRYPOINT
+
+---
+
+## 7. What is the `docker commit` command?
+
+The `docker commit` command creates a **new image from a running container**.
+
+Syntax:
+
+```
+docker commit <container_id> image_name
+```
+
+Example:
+
+```
+docker commit abc123 myimage:v1
+```
+
+However, in most modern environments, engineers prefer using **Dockerfiles** instead of commit because it is repeatable and version controlled.
+
+---
+
+## 8. How do you check logs in Docker?
+
+To check container logs, use the `docker logs` command.
+
+Example:
+
+```
+docker logs <container_id>
+```
+
+Useful options:
+
+```
+docker logs -f <container_id>     # real-time logs
+docker logs --tail 10 <container_id>  # last 10 lines
+docker logs -t <container_id>     # logs with timestamps
+```
+
+Logs help troubleshoot application issues inside containers.
+
+---
