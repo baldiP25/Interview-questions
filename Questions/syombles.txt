@@ -1,0 +1,81 @@
+Here’s a clear and traditional breakdown of **keyboard symbols** and how they’re commonly used:
+
+---
+
+## 🔤 **Basic Keyboard Symbols**
+
+### 1. **Top Row (Number Keys + Symbols)**
+
+These appear when you press **Shift + number key**:
+
+* `1` → `!` (Exclamation mark)
+* `2` → `@` (At symbol)
+* `3` → `#` (Hash / Pound)
+* `4` → `$` (Dollar)
+* `5` → `%` (Percent)
+* `6` → `^` (Caret)
+* `7` → `&` (Ampersand)
+* `8` → `*` (Asterisk)
+* `9` → `(` (Left parenthesis)
+* `0` → `)` (Right parenthesis)
+
+---
+
+### 2. **Right Side Symbols (Near Enter Key)**
+
+* `-` → Hyphen / Minus
+* `_` → Underscore (Shift + `-`)
+* `=` → Equals
+* `+` → Plus (Shift + `=`)
+* `[` `]` → Square brackets
+* `{` `}` → Curly braces (Shift + brackets)
+* `\` → Backslash
+* `|` → Pipe (Shift + `\`)
+
+---
+
+### 3. **Middle / Letter Area Symbols**
+
+* `;` → Semicolon
+* `:` → Colon (Shift + `;`)
+* `'` → Apostrophe
+* `"` → Double quotes (Shift + `'`)
+
+---
+
+### 4. **Bottom Row Symbols**
+
+* `,` → Comma
+* `<` → Less than (Shift + `,`)
+* `.` → Period / Dot
+* `>` → Greater than (Shift + `.`)
+* `/` → Forward slash
+* `?` → Question mark (Shift + `/`)
+
+---
+
+### 5. **Special Symbols**
+
+* `` ` `` → Backtick
+* `~` → Tilde (Shift + backtick)
+
+---
+
+## 💡 Common Uses (Practical Way)
+
+* `@` → Email ([example@gmail.com](mailto:example@gmail.com))
+* `#` → Hashtags / comments in code
+* `$` → Currency / variables in scripting
+* `*` → Multiplication or wildcard
+* `&` → Run processes (Linux / scripting)
+* `|` → Pipe output (very important in DevOps 😉)
+
+---
+
+If you want, I can also show:
+
+* 🔹 **Keyboard shortcuts using these symbols (very useful for DevOps)**
+* 🔹 **Symbols used in Linux commands / scripting**
+* 🔹 **Alt codes to type special symbols**
+
+Just tell me 👍
